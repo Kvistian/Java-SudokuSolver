@@ -1,4 +1,4 @@
-package sudoku.grid;
+package grid;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public abstract class Group {
     protected ArrayList<Slot> slots;
 
     public Group() {
-        slots = new ArrayList<>();
+        slots = new ArrayList<Slot>();
     }
 
     protected int getKey() {

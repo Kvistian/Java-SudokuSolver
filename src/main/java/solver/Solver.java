@@ -1,21 +1,21 @@
-package sudoku;
+package solver;
 
-import sudoku.grid.Grid;
-import sudoku.grid.Slot;
+import grid.Grid;
+import grid.Slot;
 
 import java.util.ArrayList;
 
-public class Handler {
+public class Solver {
 
     private Grid grid;
 
-    public Handler() {
+    public Solver() {
         grid = new Grid();
         grid.create(makeDefaults());
     }
 
     public static void main(String[] args) {
-        Handler handler = new Handler();
+        Solver handler = new Solver();
         handler.run();
     }
 
@@ -23,7 +23,7 @@ public class Handler {
         ArrayList<Slot> slots = grid.getSlots();
         slots.get(0).setValue(7);
 
-        System.out.println(grid);
+        System.out.println(slots.get(0).getValue());
     }
 
     private int[] makeDefaults() {

@@ -1,4 +1,4 @@
-package sudoku.grid;
+package grid;
 
 import java.util.ArrayList;
 

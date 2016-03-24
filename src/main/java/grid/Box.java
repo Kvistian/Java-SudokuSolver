@@ -1,4 +1,4 @@
-package sudoku.grid;
+package grid;
 
 public class Box extends Group {
 

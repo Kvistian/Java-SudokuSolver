@@ -1,4 +1,4 @@
-package sudoku.grid;
+package grid;
 
 import java.util.ArrayList;
 
@@ -9,10 +9,10 @@ public abstract class AbstractGrid {
     protected BoxList<Box> boxes;
 
     public AbstractGrid() {
-        slots = new ArrayList<>();
-        rows = new RowList<>();
-        columns = new ColumnList<>();
-        boxes = new BoxList<>();
+        slots = new ArrayList<Slot>();
+        rows = new RowList<Row>();
+        columns = new ColumnList<Column>();
+        boxes = new BoxList<Box>();
 
         createGroups();
     }
