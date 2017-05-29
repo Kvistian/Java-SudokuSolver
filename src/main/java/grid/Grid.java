@@ -2,11 +2,7 @@ package grid;
 
 public class Grid extends AbstractGrid {
 
-    public Grid() {
-        super();
-    }
-
-    public void create(int[] defaults) {
-        setDefaults(defaults);
+    public Grid(int[] values) {
+        super(values);
     }
 }

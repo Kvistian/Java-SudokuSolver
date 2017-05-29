@@ -1,10 +1,11 @@
-package grid;
+package grid.group.box;
 
-import java.util.ArrayList;
+import grid.Slot;
+import grid.group.Groups;
 
-public class BoxList<Box> extends ArrayList<Box> {
-    public BoxList() {
-        super();
+public class Boxes extends Groups<Box> {
+    public Boxes() {
+        super(Box.class);
     }
 
     public Box getFor(Slot slot) {

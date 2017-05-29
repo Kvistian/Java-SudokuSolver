@@ -1,5 +1,10 @@
 package grid;
 
+import com.google.common.base.MoreObjects;
+import grid.group.box.Box;
+import grid.group.column.Column;
+import grid.group.row.Row;
+
 public class Slot {
 
     private int key;
@@ -73,5 +78,13 @@ public class Slot {
 
     private void setBox() {
         //box = ((((row / 3) + 1) * 3) - 2) + (column / 3) - 1;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("key", key)
+                .add("value", value)
+                .toString();
     }
 }

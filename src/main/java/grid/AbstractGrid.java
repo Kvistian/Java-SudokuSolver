@@ -1,31 +1,30 @@
 package grid;
 
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import grid.group.box.Box;
+import grid.group.box.Boxes;
+import grid.group.column.Column;
+import grid.group.column.Columns;
+import grid.group.row.Row;
+import grid.group.row.Rows;
+import java.util.List;
 
 public abstract class AbstractGrid {
-    protected ArrayList<Slot> slots;
-    protected RowList<Row> rows;
-    protected ColumnList<Column> columns;
-    protected BoxList<Box> boxes;
+    protected final List<Slot> slots;
+    protected final Rows rows;
+    protected final Columns columns;
+    protected final Boxes boxes;
 
-    public AbstractGrid() {
-        slots = new ArrayList<Slot>();
-        rows = new RowList<Row>();
-        columns = new ColumnList<Column>();
-        boxes = new BoxList<Box>();
+    public AbstractGrid(int[] initialValues) {
+        slots = Lists.newArrayList();
+        rows = new Rows();
+        columns = new Columns();
+        boxes = new Boxes();
 
-        createGroups();
+        init(initialValues);
     }
 
-    private void createGroups() {
-        for (int key = 0; key < 9; key++) {
-            rows.add(new Row(key));
-            columns.add(new Column(key));
-            boxes.add(new Box(key));
-        }
-    }
-
-    protected void setDefaults(int[] defaults) {
+    private void init(int[] defaults) {
         int key = 0;
 
         for (int value : defaults) {
@@ -43,7 +42,7 @@ public abstract class AbstractGrid {
         }
     }
 
-    public ArrayList<Slot> getSlots() {
+    public List<Slot> getSlots() {
         return slots;
     }
 }

@@ -2,41 +2,28 @@ package solver;
 
 import grid.Grid;
 import grid.Slot;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class Solver {
+    private final Grid grid;
 
-    private Grid grid;
-
-    public Solver() {
-        grid = new Grid();
-        grid.create(makeDefaults());
+    public Solver(int[] gridValues) {
+        grid = new Grid(gridValues);
     }
 
-    public static void main(String[] args) {
-        Solver handler = new Solver();
-        handler.run();
-    }
+    public void solve() {
+        List<Slot> slots = grid.getSlots();
+        Slot slot1 = slots.get(27);
+        slot1.getRow().relations();
 
-    public void run() {
-        ArrayList<Slot> slots = grid.getSlots();
-        slots.get(0).setValue(7);
+        Slot slot2 = slots.get(36);
+        slot2.getRow().relations();
 
-        System.out.println(slots.get(0).getValue());
-    }
+        Slot slot3 = slots.get(45);
+        slot3.getRow().relations();
 
-    private int[] makeDefaults() {
-        return new int[] {
-            1, 2, 3, 4, 5, 6, 7, 8, 9,
-            9, 1, 2, 3, 4, 5, 6, 7, 8,
-            8, 9, 1, 2, 3, 4, 5, 6, 7,
-            7, 8, 9, 1, 2, 3, 4, 5, 6,
-            6, 7, 8, 9, 1, 2, 3, 4, 5,
-            5, 6, 7, 8, 9, 1, 2, 3, 4,
-            4, 5, 6, 7, 8, 9, 1, 2, 3,
-            3, 4, 5, 6, 7, 8, 9, 1, 2,
-            2, 3, 4, 5, 6, 7, 8, 9, 1
-        };
+        Slot slot4 = slots.get(54);
+        slot4.getRow().relations();
+
     }
 }
