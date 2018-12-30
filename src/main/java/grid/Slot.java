@@ -85,6 +85,9 @@ public class Slot {
         return MoreObjects.toStringHelper(this)
                 .add("key", key)
                 .add("value", value)
+                .add("row", row.getKey())
+                .add("column", column.getKey())
+                .add("box", box.getKey())
                 .toString();
     }
 }

@@ -2,15 +2,17 @@ package grid.group.row;
 
 import com.google.common.collect.Lists;
 import grid.group.Group;
-import grid.group.Groups;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Row extends Group<Row> {
     public Row(Rows rows, int key) {
         super(rows, key);
     }
 
-    public Groups<Row> relations() {
+    @Override
+    public List<Row> relations() {
         List<Integer> relatedKeys = Lists.newArrayList();
         int prevKey = key;
 
@@ -26,6 +28,8 @@ public class Row extends Group<Row> {
         }
         System.out.println("key:" + key + " relatedKeys: " + relatedKeys);
 
-        return relations;
+        return relatedKeys.stream()
+                .map(relations::get)
+                .collect(Collectors.toList());
     }
 }

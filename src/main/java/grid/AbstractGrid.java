@@ -1,35 +1,32 @@
 package grid;
 
-import com.google.common.collect.Lists;
 import grid.group.box.Box;
 import grid.group.box.Boxes;
 import grid.group.column.Column;
 import grid.group.column.Columns;
 import grid.group.row.Row;
 import grid.group.row.Rows;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractGrid {
-    protected final List<Slot> slots;
-    protected final Rows rows;
-    protected final Columns columns;
-    protected final Boxes boxes;
+    protected final List<Slot> slots = new ArrayList<>();
+    protected final Rows rows = new Rows();
+    protected final Columns columns = new Columns();
+    protected final Boxes boxes = new Boxes();
+    protected final Map<Integer, List<Slot>> valueSlots = new HashMap<>();
 
-    public AbstractGrid(int[] initialValues) {
-        slots = Lists.newArrayList();
-        rows = new Rows();
-        columns = new Columns();
-        boxes = new Boxes();
+    AbstractGrid(int[] initialValues) {
+        for (int key = 0; key < initialValues.length; key++) {
+            int value = initialValues[key];
+            if (value == 0) {
+                continue;
+            }
 
-        init(initialValues);
-    }
-
-    private void init(int[] defaults) {
-        int key = 0;
-
-        for (int value : defaults) {
             Slot slot = new Slot(key, value);
-
             Row row = rows.getFor(slot);
             Column column = columns.getFor(slot);
             Box box = boxes.getFor(slot);
@@ -38,7 +35,10 @@ public abstract class AbstractGrid {
 
             slots.add(slot);
 
-            key++;
+            if (!valueSlots.containsKey(value)) {
+                valueSlots.put(value, new ArrayList<>());
+            }
+            valueSlots.get(value).add(slot);
         }
     }
 

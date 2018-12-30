@@ -8,6 +8,7 @@ public class Columns extends Groups<Column> {
         super(Column.class);
     }
 
+    @Override
     public Column getFor(Slot slot) {
         int index = slot.getKey() % 9;
 

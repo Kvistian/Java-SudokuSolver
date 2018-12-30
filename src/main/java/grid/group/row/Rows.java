@@ -8,6 +8,7 @@ public class Rows extends Groups<Row> {
         super(Row.class);
     }
 
+    @Override
     public Row getFor(Slot slot) {
         int index = slot.getKey() / 9;
 

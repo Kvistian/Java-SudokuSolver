@@ -8,6 +8,7 @@ public class Boxes extends Groups<Box> {
         super(Box.class);
     }
 
+    @Override
     public Box getFor(Slot slot) {
         int row = slot.getKey() / 9;
         int column = slot.getKey() % 9;
